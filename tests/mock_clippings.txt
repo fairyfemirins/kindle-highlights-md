@@ -1,0 +1,12 @@
+Sample Book Title (Sample Author)
+- Your Highlight on Location 123 | Added on Monday, October 1, 2023 12:00:00 PM
+
+This is a highlighted text.==========
+Sample Book Title (Sample Author)
+- Your Note on Location 123 | Added on Monday, October 1, 2023 12:00:01 PM
+
+This is a note.==========
+Another Book (Another Author)
+- Your Highlight on page 45 | Location 456 | Added on Tuesday, October 2, 2023 1:00:00 PM
+
+This is another highlight.

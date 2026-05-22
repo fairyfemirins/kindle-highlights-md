@@ -45,5 +45,10 @@ This is a highlight.\n==========\n```
 > This is a highlight.
 ```
 
+## Technical Architecture
+- **Parser**: Uses regex to extract highlights, notes, and metadata from `My Clippings.txt`.
+- **Markdown Generator**: Converts parsed data into Markdown files with metadata.
+- **CLI**: Built with `click` for user-friendly arguments.
+
 ## License
 MIT
