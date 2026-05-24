@@ -1,54 +1,64 @@
-# kindle-highlights-md
+# Kindle Highlights to Markdown CLI
 
-Convert Kindle's `My Clippings.txt` into structured Markdown notes.
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+A **standalone CLI tool** to parse Kindle's `My Clippings.txt`, deduplicate highlights, and export them to **Markdown** or an **Obsidian vault**.
 
 ## Features
-- Parse `My Clippings.txt` into Markdown.
-- Group highlights by book.
-- Support for notes, highlights, and bookmarks.
-- CLI interface for easy use.
-- Output to file or stdout.
+
+- **Deduplication**: Remove duplicate highlights (same book, location, and content).
+- **Markdown Export**: One file per book with clean formatting.
+- **Obsidian Integration**: Export directly to an Obsidian vault.
+- **Non-Interactive**: Designed for automation and scripting.
 
 ## Installation
+
 ```bash
-pip install --user git+https://github.com/fairyfemirins/kindle-highlights-md.git
+pip install click rich
 ```
 
 ## Usage
+
+### Basic Export
 ```bash
-# Convert to Markdown and save to file
-kindle-highlights-md /path/to/My\ Clippings.txt output.md
-
-# Print to terminal
-kindle-highlights-md /path/to/My\ Clippings.txt
+python kindle_highlights.py --input "My Clippings.txt" --output output
 ```
 
-## Example
-### Input (`My Clippings.txt`)
+### Deduplication
+```bash
+python kindle_highlights.py --input "My Clippings.txt" --output output --dedupe
 ```
-The Pragmatic Programmer (Andrew Hunt)
-- Your Highlight on page 42 | Location 123-124 | Added on Friday, May 22, 2026 12:00:00 PM
 
-This is a highlight.\n==========\n```
+### Obsidian Integration
+```bash
+python kindle_highlights.py --input "My Clippings.txt" --obsidian "~/obsidian_vault/Kindle"
+```
 
-### Output (`output.md`)
+## Example Output
+
+**`The Pragmatic Programmer_Andrew Hunt.md`**
+
 ```markdown
-# Kindle Highlights
+# The Pragmatic Programmer: Your Journey to Mastery (Andrew Hunt)
 
-## The Pragmatic Programmer
+> Debugging is twice as hard as writing the code in the first place.
 
-### Highlight
-- **Page**: 42
-- **Location**: 123-124
-- **Date**: Friday, May 22, 2026 12:00:00 PM
+**Location:** 123
 
-> This is a highlight.
+---
 ```
 
 ## Technical Architecture
-- **Parser**: Uses regex to extract highlights, notes, and metadata from `My Clippings.txt`.
-- **Markdown Generator**: Converts parsed data into Markdown files with metadata.
-- **CLI**: Built with `click` for user-friendly arguments.
+
+1. **Parsing**: Uses regex to split `My Clippings.txt` into entries and extract metadata (book title, location, page, content).
+2. **Deduplication**: Generates a unique key for each highlight (`book_title + location + content`) and filters duplicates.
+3. **Export**: Writes one Markdown file per book with proper formatting for Obsidian compatibility.
+
+## Limitations
+
+- Only supports **English-language** Kindle clippings (metadata format varies by language).
+- Does not support **bookmarks** or **notes** (highlights only).
 
 ## License
+
 MIT
