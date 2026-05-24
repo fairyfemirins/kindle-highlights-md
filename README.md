@@ -11,9 +11,19 @@ A **standalone CLI tool** to parse Kindle's `My Clippings.txt`, deduplicate high
 - **Obsidian Integration**: Export directly to an Obsidian vault.
 - **Non-Interactive**: Designed for automation and scripting.
 
+## Note
+
+This repository was published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
+
+To request a transfer, open an issue in this repository or contact `@femirins` on GitHub.
+
+---
+
 ## Installation
 
 ```bash
+git clone https://github.com/fairyfemirins/kindle-highlights-md.git
+cd kindle-highlights-md
 pip install click rich
 ```
 
